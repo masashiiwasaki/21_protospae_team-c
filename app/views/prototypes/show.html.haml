@@ -13,6 +13,9 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+    .col-md-6.text-right
+      .btn.btn-default
+        = link_to "delete", "/prototypes/#{@prototype.id}", method: :delete
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
@@ -37,6 +40,3 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
-
-.btn-group{:style => "margin-left:10px; "}
-  = link_to "delete", "/prototypes/#{@prototype.id}", method: :delete

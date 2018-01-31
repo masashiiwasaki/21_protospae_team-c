@@ -15,7 +15,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      redirect_to ({ action: new }), alert: 'New prototype was unsuccessfully created'
      end
   end
 
@@ -23,11 +23,17 @@ class PrototypesController < ApplicationController
     prototype = Prototype.find(params[:id])
     prototype.destroy if prototype.user_id == current_user.id
 
+    redirect_to :root, notice: 'Prototype was successfully deleted'
   end
 
   def edit
     prototype = Prototype.find(params[:id])
 
+  end
+
+  def update
+      prototype = Prototype.find(params[:id])
+      prototype.update if prototype.user_id == current_user.id
   end
 
   def show

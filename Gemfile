@@ -25,3 +25,11 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
+group :production do
+  gem 'pg', '0.18.4'
+end
+
+group :development, :test do
+  gem 'sqlite3', '1.3.11'
+end

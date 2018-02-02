@@ -19,26 +19,23 @@ class PrototypesController < ApplicationController
      end
   end
 
-  def destroy
-    prototype = Prototype.find(params[:id])
-    prototype.destroy if prototype.user_id == current_user.id
-
-    redirect_to :root, notice: 'Prototype was successfully deleted'
-  end
-
-  def edit
-    prototype = Prototype.find(params[:id])
-
-  end
-
-  def update
-      prototype = Prototype.find(params[:id])
-      prototype.update if prototype.user_id == current_user.id
-  end
-
   def show
   end
 
+  def destroy
+   prototype = Prototype.find(params[:id])
+   prototype.destroy if prototype.user_id == current_user.id
+   redirect_to :root, notice: 'New prototype was successfully created'
+  end
+
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def update
+    prototype = Prototype.find(params[:id])
+    prototype.update if prototype.user_id == current_user.id
+  end
 
   private
 

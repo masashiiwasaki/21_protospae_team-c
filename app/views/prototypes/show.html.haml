@@ -13,12 +13,12 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
-    .col-md-6.text-right
-      .btn.btn-default
-      //ログイン状態で表示可能にする条件分岐を追加
-        = link_to "DELETE", "/prototypes/#{@prototype.id}", method: :delete
-        //画像の削除も追加する
-        = link_to "EDIT", "/prototypes/#{@prototype.id}/edit", method: :get
+    - if user_signed_in? && current_user.id == @prototype.user_id
+      .col-md-6.text-right
+        .btn.btn-default
+          = link_to "DELETE", "/prototypes/#{@prototype.id}", method: :delete
+          //画像の削除も追加する
+          = link_to "EDIT", "/prototypes/#{@prototype.id}/edit", method: :get
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
@@ -43,7 +43,3 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
-
-.btn-group{:style => "margin-left:10px; "}
-  = link_to "delete", "/prototypes/#{@prototype.id}", method: :delete
-

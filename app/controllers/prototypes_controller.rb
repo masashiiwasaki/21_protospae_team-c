@@ -30,11 +30,14 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
+    @captured_images = @prototype.captured_images
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    prototype.update if prototype.user_id == current_user.id
+   prototype = Prototype.find(params[:id])
+   prototype.update(prototype_params) if prototype.user_id == current_user.id
+    redirect_to :root, notice: 'The product has been successfully updated'
+
   end
 
   private

@@ -1,5 +1,5 @@
 .container.proto-new
-  = form_for(@prototype, url: user_path(@prototype), html: {method: "patch"}) do |f|
+  = form_for(@prototype) do |f|
     = f.hidden_field :user_id, value: current_user.id
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
@@ -13,7 +13,9 @@
           .cover-image-upload#main_image_uploader
             = f.fields_for :captured_images do |image|
               %img
-              = image.file_field :content, required: true
+              = image.file_field content: "#{@captured_images}", required: true
+              = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+              / captured_imagesから余計な写真を取り出せないようにする
               = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
@@ -24,6 +26,7 @@
                   = f.fields_for :captured_images do |image|
                     %img
                     = image.file_field :content
+                    / eachメソッドを使ってサムネイルを表示させる機能を追加
                     = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12

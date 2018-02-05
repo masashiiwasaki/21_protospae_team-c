@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'better_errors'
 
 group :development, :test do
   gem 'byebug'
@@ -27,7 +28,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.18.4'
 end
 
 group :development, :test do

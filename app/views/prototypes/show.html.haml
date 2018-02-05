@@ -18,6 +18,7 @@
         .btn.btn-default
           = link_to "DELETE", "/prototypes/#{@prototype.id}", method: :delete
           //画像の削除も追加する
+        .btn.btn-default
           = link_to "EDIT", "/prototypes/#{@prototype.id}/edit", method: :get
   .row
     .col-md-9.image-box

@@ -15,7 +15,9 @@
               = @prototype.user.position
     .col-md-6.text-right
       .btn.btn-default
+      //ログイン状態で表示可能にする条件分岐を追加
         = link_to "DELETE", "/prototypes/#{@prototype.id}", method: :delete
+        //画像の削除も追加する
         = link_to "EDIT", "/prototypes/#{@prototype.id}/edit", method: :get
   .row
     .col-md-9.image-box

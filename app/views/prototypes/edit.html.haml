@@ -15,7 +15,7 @@
               %img
               = image.file_field content: "#{@captured_images}", required: true
               = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
-              / captured_imagesから余計な写真を取り出せないようにする
+              / captured_imagesから最新の画像のみを取り出す(古いimgは参照しない)
               = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails

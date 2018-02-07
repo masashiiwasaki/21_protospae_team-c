@@ -41,3 +41,7 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+.ruby-version
+config/database.yml
+Gemfile
+Gemfile.lock

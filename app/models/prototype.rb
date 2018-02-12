@@ -2,10 +2,10 @@ class Prototype < ActiveRecord::Base
   belongs_to :user
   has_many :captured_images, dependent: :destroy
 
-  has_many :tag_prototype_indices, depenedent: :destroy
+  has_many :tag_prototype_indices, dependent: :destroy
   has_many :tags, :through => :tag_prototype_indices
 
-  acceot_nested_attributes_for :tag_prototype_indices, allow_destroy: true
+  accepts_nested_attributes_for :tag_prototype_indices, allow_destroy: true
 
   accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images
 

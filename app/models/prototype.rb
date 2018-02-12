@@ -3,7 +3,7 @@ class Prototype < ActiveRecord::Base
   has_many :captured_images, dependent: :destroy
 
   has_many :tag_prototype_indices, depenedent: :destroy
-  has many :tags, :through => :tag_prototype_indices
+  has_many :tags, :through => :tag_prototype_indices
 
   acceot_nested_attributes_for :tag_prototype_indices, allow_destroy: true
 

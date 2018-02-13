@@ -8,7 +8,10 @@ class PrototypesController < ApplicationController
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
-    @prototype.tags.build
+    3.times {
+      # 関連オブジェクトをbuild
+      @prototype.tags.build
+    }
   end
 
   def create

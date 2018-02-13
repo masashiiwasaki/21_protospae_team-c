@@ -36,9 +36,9 @@
         .col-md-12
           %h4 Tag List
           %ul
-            - 3.times do |i|
+            - @prototype.tags.each do |tag|
               %li
-                = f.fields_for :tag do |tag|
-                  = tag.text_field :title
+                = f.fields_for :tags, tag do |tag_field|
+                  = tag_field.text_field :title
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"

@@ -644,5 +644,15 @@ body {
 .media-left img{
   width: 64px;
   height: 64px;
+}
 
+/* -- comments ------------------------------------ */
+
+.proto-page .user-nav button img{
+  max-width: 18px;
+  margin-right: 5px;
+}
+
+.heart_on {
+  display: none;
 }

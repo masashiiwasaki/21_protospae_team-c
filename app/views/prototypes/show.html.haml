@@ -23,6 +23,11 @@
           //画像の削除も追加する
         .btn.btn-default
           = link_to "EDIT", "/prototypes/#{@prototype.id}/edit", method: :get
+        %button.btn.btn-default.btn-like
+          = image_tag("icon_heart.svg", alt: "Icon heart", class: 'heart')
+          = image_tag("icon_heart_on.svg", alt: "Icon heart_on", class: 'heart_on')
+          Like
+          %span.num 0
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")

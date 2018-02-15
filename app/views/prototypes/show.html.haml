@@ -3,8 +3,11 @@
     .col-md-6
       .media
         .media-left
-          = link_to user_path(@prototype.user) do
-            = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+          - if @prototype.user.avatar.thumb.present?
+            = link_to user_path(@prototype.user) do
+              = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+          - else
+            = image_tag("http://design-ec.com/d/e_others_50/l_e_others_500.png", alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
@@ -13,10 +16,13 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
-    .col-md-6.text-right
-      .btn.btn-default
-        = link_to "DELETE", "/prototypes/#{@prototype.id}", method: :delete
-        = link_to "EDIT", "/prototypes/#{@prototype.id}/edit", method: :get
+    - if user_signed_in? && current_user.id == @prototype.user_id
+      .col-md-6.text-right
+        .btn.btn-default
+          = link_to "DELETE", "/prototypes/#{@prototype.id}", method: :delete
+          //画像の削除も追加する
+        .btn.btn-default
+          = link_to "EDIT", "/prototypes/#{@prototype.id}/edit", method: :get
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")

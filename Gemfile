@@ -17,6 +17,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'better_errors'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

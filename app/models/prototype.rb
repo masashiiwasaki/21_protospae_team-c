@@ -6,6 +6,11 @@ class Prototype < ActiveRecord::Base
   has_many :prototype_tags, dependent: :destroy
   has_many :tags, :through => :prototype_tags
 
+  has_many :likes, dependent: :destroy
+  def like_user(user_id)
+   likes.find_by(user_id: user_id)
+  end
+
   accepts_nested_attributes_for :tags, allow_destroy: true
   accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images
 

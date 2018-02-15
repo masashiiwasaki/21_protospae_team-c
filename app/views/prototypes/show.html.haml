@@ -44,5 +44,33 @@
       %h4 Tag List
       %ul.proto-tag-list.list-inline
         - @prototype.tags.each do |tag|
-          %li
-            %a{href: "#", class: "btn btn-default"} #{tag.title}
+            %li
+              %a{href: "#", class: "btn btn-default"} #{tag.title}
+  .row.proto-comments
+    %h4.col-md-12
+      Comments
+      %span#comments_count.num
+        (0)
+    .col-md-8
+      #comments
+        - if @comments
+          - @comments.each do |comment|
+            .media
+              .media-left
+                = link_to "/users/#{comment.user_id}" do
+                  = image_tag("#{comment.user.avatar}")
+              .media-body
+                %h4#top-aligned-media.media-heading= comment.user.name
+                %p= comment.text
+      .form-inlign{:role => "form"}
+        - if current_user
+          / = form_tag("/prototypes/#{@prototype.id}/comments", method: :post, id: "new_comment", class: "new_comment")
+          = form_for [@prototype,@comment], remote: true do |f|
+            %h4 Write a comment
+            .row
+              .form-group.col-md-10
+                %textarea#comment_field.form-control{:name => "text", :placeholder => "Input comment", :required => "required", :rows => "3"}
+                / %input#comment_user_id{:type => "hidden", :value => "132"}/
+                / %input#comment_prototype_id{:type => "hidden", :value => "1"}/
+              .form-group.col-md-2
+                %input.btn.btn-primary{:name => "commit", :type => "submit", :value => "comment"}/

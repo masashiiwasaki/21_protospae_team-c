@@ -3,10 +3,10 @@
     = image_tag("icon_heart.svg", alt: "Icon heart", class: 'heart')
     Like
     %span
-      = prototype.like_count
+      = prototype.likes_count
 - else
   = button_to prototype_likes_path(prototype), id: "like-button", remote: true do
     = image_tag("icon_heart_on.svg", alt: "Icon heart_on", class: 'heart_on')
     Like
     %span
-      = prototype.like_count
+      = prototype.likes_count
